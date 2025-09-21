@@ -1,0 +1,15 @@
+name: my action
+description: My first action
+inputs:
+  myInput:
+    description: 'An input for my action'
+    required: true
+    default: 'default value'
+outputs:
+  myOutput:
+    description: 'An output from my action'
+runs:
+  using: 'node12'
+  main: 'index.js'
+branding:
+  icon: 'zap'
