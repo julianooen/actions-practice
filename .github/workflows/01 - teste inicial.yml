@@ -1,0 +1,11 @@
+name: teste-inicial
+on:
+    workflow_dispatch:
+jobs:
+    teste-inicial:
+        runs-on: ubuntu-latest
+        steps:
+            - name: type ok
+              run: echo "ok"
+            - name: type ok again
+              run: echo "ok"
