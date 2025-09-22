@@ -2,6 +2,8 @@ name: teste-inicial
 on:
     workflow_dispatch:
     push:
+env:
+  COMMIT_SHA: ${{ github.sha }}
 jobs:
     teste-inicial:
         runs-on: ubuntu-latest
@@ -9,4 +11,6 @@ jobs:
           - name: sha 1
             run: echo "Commit sha is $GITHUB_SHA"
           - name: sha 2
-            run: echo "Commit sha is ${{ github.sha }}"
+            run: echo "Commit sha is ${{ github.sha }}" #funciona mas o ideal é colocar em uma variavel de ambiente como no proximo step
+          - name: sha 3
+            run: echo "Commit sha is $COMMIT_SHA"
