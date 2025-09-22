@@ -8,3 +8,5 @@ jobs:
         steps:
           - name: sha 1
             run: echo "Commit sha is $GITHUB_SHA"
+          - name: sha 2
+            run: echo "Commit sha is ${{ github.sha }}"
