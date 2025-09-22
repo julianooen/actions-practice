@@ -1,11 +1,10 @@
 name: teste-inicial
 on:
     workflow_dispatch:
+    push:
 jobs:
     teste-inicial:
         runs-on: ubuntu-latest
         steps:
-            - name: type ok
-              run: echo "ok"
-            - name: type ok again
-              run: echo "ok"
+          - name: sha 1
+            run: echo "Commit sha is $GITHUB_SHA"
