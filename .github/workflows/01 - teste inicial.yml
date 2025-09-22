@@ -1,16 +1,51 @@
 name: teste-inicial
 on:
-    workflow_dispatch:
-    push:
+  workflow_dispatch:
+    inputs:
+      ambiente:
+        description: 'Ambiente de deploy'
+        required: true
+        default: 'dev'
+        type: environment
 env:
   COMMIT_SHA: ${{ github.sha }}
 jobs:
-    teste-inicial:
-        runs-on: ubuntu-latest
-        steps:
-          - name: sha 1
-            run: echo "Commit sha is $GITHUB_SHA"
-          - name: sha 2
-            run: echo "Commit sha is ${{ github.sha }}" #funciona mas o ideal é colocar em uma variavel de ambiente como no proximo step
-          - name: sha 3
-            run: echo "Commit sha is $COMMIT_SHA"
+  teste-inicial:
+    runs-on: ubuntu-latest
+    steps:
+      - name: sha 1
+        run: echo "Commit sha is $GITHUB_SHA"
+      - name: sha 2
+        run: echo "Commit sha is ${{ github.sha }}" #funciona mas o ideal é colocar em uma variavel de ambiente como no proximo step
+      - name: sha 3
+        run: echo "Commit sha is $COMMIT_SHA"
+  ambiente:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ambiente
+        run: echo "Ambiente de deploy é ${{ github.event.inputs.ambiente }}"
+  dev:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.ambiente == 'dev' }}
+    steps:
+      - name: ambiente dev
+        run: echo "Deploy no ambiente de desenvolvimento"
+  hml:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.ambiente == 'hml' }}
+    steps:
+      - name: ambiente hml  
+        run: echo "Deploy no ambiente de homologação"
+  prod:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.ambiente == 'prod' }}
+    steps:
+      - name: ambiente prod
+        run: echo "Deploy no ambiente de produção"  
+  todos:
+    runs-on: ubuntu-latest
+    needs: [dev, hml, prod]
+    steps:
+      - name: todos
+        run: echo "Fim do deploy" 
+            
