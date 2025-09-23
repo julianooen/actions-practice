@@ -8,13 +8,14 @@ inputs:
 outputs:
   saudacao:
     description: 'Saudação personalizada'
+    value: ${{ steps.saudacao_step.outputs.saudacao }}
 runs:
   using: 'composite'
   steps:
     - name: Saudação
-      id: saudacao_step
       run: echo "Olá, ${{ inputs.nome }}! Bem-vindo ao GitHub Actions."
       shell: bash
     - name: Definir saída de saudação
+      id: saudacao_step
       run: echo "saudacao=Olá, ${{ inputs.nome }}! Bem-vindo ao GitHub Actions." >> $GITHUB_OUTPUT
       shell: bash
