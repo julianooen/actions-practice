@@ -1,0 +1,9 @@
+name: call docker no hub
+on:
+  workflow_dispatch:
+jobs:
+  call-docker-no-hub:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Docker no hub
+        uses: docker://hello-world:latest
