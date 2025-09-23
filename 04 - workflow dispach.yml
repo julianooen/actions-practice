@@ -1,0 +1,14 @@
+name: Workflow Dispatch
+on:
+  workflow_dispatch:[one, two]
+jobs:
+  one:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step One
+        run: echo "This is job one"
+  two:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step Two
+        run: echo "This is job two"
