@@ -1,13 +1,16 @@
 name: Workflow Dispatch
 on:
-  workflow_dispatch:[one, two]
+  repository_dispatch:
+    types: [one, two]
 jobs:
   one:
+    if: github.event.action == 'one'
     runs-on: ubuntu-latest
     steps:
       - name: Step One
         run: echo "This is job one"
   two:
+    if: github.event.action == 'two'
     runs-on: ubuntu-latest
     steps:
       - name: Step Two
