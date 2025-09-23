@@ -1,0 +1,23 @@
+name: Teste de Ação com Output
+on:
+  workflow_dispatch:
+    inputs:
+      nome:
+        description: 'Seu nome'
+        required: true
+        default: 'MOMO'
+env:
+  COMMIT_SHA: ${{ github.sha }}
+jobs:
+  teste-acao:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Usar ação personalizada
+        id: minha_acao
+        uses: ./.github/actions/02
+        with:
+          nome: ${{ github.event.inputs.nome }}
+      - name: Mostrar saída da ação
+        run: echo "${{ steps.minha_acao.outputs.saudacao }}"
+      - name: Mostrar Commit SHA
+        run: echo "Commit sha is $COMMIT_SHA"

@@ -1,0 +1,20 @@
+name: My Action
+description: 'My custom GitHub Action'
+inputs:
+  nome:
+    description: 'Seu nome'
+    required: true
+    default: 'MOMO'
+outputs:
+  saudacao:
+    description: 'Saudação personalizada'
+runs:
+  using: 'composite'
+  steps:
+    - name: Saudação
+      id: saudacao_step
+      run: echo "Olá, ${{ inputs.nome }}! Bem-vindo ao GitHub Actions."
+      shell: bash
+    - name: Definir saída de saudação
+      run: echo "saudacao=Olá, ${{ inputs.nome }}! Bem-vindo ao GitHub Actions." >> $GITHUB_OUTPUT
+      shell: bash
