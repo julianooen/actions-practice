@@ -12,6 +12,7 @@ jobs:
   teste-acao:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Usar ação personalizada
         id: minha_acao
         uses: ./.github/actions/02
