@@ -15,3 +15,21 @@ jobs:
     steps:
       - name: Step Two
         run: echo "This is job two"
+
+
+
+#  curl --location 'https://api.github.com/repos/julianooen/actions-practice/dispatches' \
+# --header 'Accept: application/vnd.github+json' \
+# --header 'Authorization: token <meu token>' \
+# --header 'Content-Type: application/json' \
+# --data '{
+#     "event_type": "two",
+    
+#     "client_payload": {
+#         "mensagem": "Olá do Postman",
+#         "a": "eu sou o a",
+#         "iniciado": "vim do evento iniciado",
+#         "custom": "vim do custom",
+#         "verdade": true
+#     }
+# }'       
