@@ -6,6 +6,10 @@ on:
         description: 'Seu nome'
         required: true
         default: 'MOMO'
+      myInput:
+        description: 'Um input para minha ação'
+        required: true
+        default: 'AYASE'
 env:
   COMMIT_SHA: ${{ github.sha }}
 jobs:
@@ -13,7 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Usar ação personalizada
+      - name: Action 1
+        uses: ./.github/actions/01
+        with:
+          myInput: ${{ github.event.inputs.myInput }}
+      - name: Action 2
         id: minha_acao
         uses: ./.github/actions/02
         with:
