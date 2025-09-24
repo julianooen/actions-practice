@@ -6,5 +6,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Chamar script bash
-        run: ./.github/scripts/teste.sh
+        run: .github/scripts/teste.sh
         shell: bash
