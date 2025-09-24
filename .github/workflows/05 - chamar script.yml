@@ -8,5 +8,7 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v4
       - name: Chamar script bash
-        run: .github/scripts/teste.sh
+        run: |
+            chmod +x .github/scripts/teste.sh
+            .github/scripts/teste.sh
         shell: bash
